@@ -15,3 +15,11 @@ I called this experiment Elixa to keep the Eliza roots and at the same time conn
 
 For Eliza I used: https://www.jezuk.co.uk/blog/2017/08/eliza-in-python.html
 
+
+## You liked it?
+
+You can buy me a coffee!
+
+<a href="https://www.buymeacoffee.com/marcyves" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" width="210" ></a>
+
+Made by [@marcyves](https://github.com/marcyves)
