@@ -9,6 +9,8 @@
 #  hacked into a module and updated by Jez Higgins
 #----------------------------------------------------------------------
 
+import sys
+import time
 import string
 import re
 import random
@@ -297,44 +299,46 @@ gPats = [
 # #----------------------------------------------------------------------
 
 def speak(audio):
-    engine.say(audio)   
-    engine.runAndWait()
+  print("Elixa: {}".format(audio))
+  engine.say(audio)   
+  engine.runAndWait()
 
 def listen():
-    r = sr.Recognizer()
+  r = sr.Recognizer()
+  listening = True
+  while listening:
     with sr.Microphone() as source:
-        print("Elixa: Listening...")
-        audio=r.listen(source)
-        try:    
-            query = r.recognize_google(audio)
-#            print(f'master:{query}')
-            print(query)
-            return query
-        except:
-            speak("Try Again")
+      print("\nElixa is listening...", sep=' ', end='', flush=True)
+      audio=r.listen(source)
+      try:    
+        query = r.recognize_google(audio)
+        listening = False
+      except:
+        speak("\rCan you say that again?", sep=' ', end='', flush=True)
+  return query
+
 
 #----------------------------------------------------------------------
 #  command_interface
 #----------------------------------------------------------------------
 def command_interface():
-  speak('This is Elixa, your therapist')
-  speak('Talk to the program by typing in plain English, using normal upper and lower-case letters and punctuation.  Enter "quit" when done.')
-  # print('='*72)
-  speak('Hello.  How are you feeling today?')
+  print("\n\nElixa the therapist")
+  print("===================")
+  speak('Hello, this is Elixa, your therapist')
+  speak('You can talk to the program in plain English.  Say "quit" when done.')
+  speak('How are you feeling today?')
 
   s = ''
-  therapist = Eliza();
+  therapist = Eliza()
   while s != 'quit':
     try:
-#      s = input('> ')
       s = listen()
     except EOFError:
       s = 'quit'
-    print(s)
+    print("\rYou: {}               ".format(s))
     while s[-1] in '!.':
       s = s[:-1]
     speak(therapist.respond(s))
-#    print(therapist.respond(s))
 
 
 if __name__ == "__main__":
