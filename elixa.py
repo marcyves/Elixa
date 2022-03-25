@@ -7,6 +7,7 @@
 #  a cheezy little Eliza knock-off by Joe Strout
 #  with some updates by Jeff Epler
 #  hacked into a module and updated by Jez Higgins
+#  speech recognition and voice support added by Marc Augier
 #----------------------------------------------------------------------
 
 import sys
